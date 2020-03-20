@@ -9,16 +9,16 @@ $(document).ready(function() {
 
   (async () => {
     try {
-      let response = await fetch(`https://bikeindex.org/api/v2/bikes_search/stolen?per_page=10`);
+      let response = await fetch(`https://bikeindex.org/api/v3/bikes_search/stolen?per_page=10`);
       let jsonifiedResponse;
       if (response.ok && response.status == 200) {
         jsonifiedResponse = await response.json();
       } else {
         jsonifiedResponse = false;
       }
-      alert(jsonifiedResponse)
+      $('#results').append(jsonifiedResponse.bikes[0].serial);
     } catch(e) {
-      alert(e.message + ' --- ' + jsonifiedResponse);
+      alert(e.message);
     }
   })();
 
