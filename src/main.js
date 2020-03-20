@@ -16,25 +16,14 @@ $(document).ready(function() {
       } else {
         jsonifiedResponse = false;
       }
-      $('#results').append(jsonifiedResponse.bikes[0].serial);
+      for (let bike of jsonifiedResponse.bikes) {
+        $('#results').append(`${bike.serial}<br>`)
+      }
+      // $('#results').append(jsonifiedResponse.bikes[0].serial);
     } catch(e) {
       alert(e.message);
     }
   })();
 
-  // $('').click(function() {
-    
-  // });
   
 });
-
-/*
-Application Id:
-
-w5-bjwnD98pKvRiH1vbUNzlpJbSHDSk-nNgOzO94VXo
-Secret:
-
-1vS4JJ488XQ2yLjwUBB0ILkshIQds9HPu2m4N7tw5JM
-Callback urls:
-https://bikeindex.org/documentation/authorize
-*/
