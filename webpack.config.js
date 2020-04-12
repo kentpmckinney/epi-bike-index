@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -15,29 +14,33 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
-    new UglifyJsPlugin({ sourceMap: true }),
+    new UglifyJsPlugin({
+      test: /\.js$/i,
+      sourceMap: true,
+      uglifyOptions: { compress: {}, mangle: true }
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Webkit Template',
+      title: 'Bike API',
       template: './src/index.html',
       inject: 'head'
-    }),
-    new Dotenv()
+    })
   ],
+  // resolve: {
+  //   extensions: ['.js', '.jsx', '.css'],
+  //   modulesDirectories: [
+  //     'src',
+  //     // '/usr/local/lib/node_modules',
+  //     'node_modules'
+  //   ]
+  // },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader"
-      }
+      { test: /\.css$/i, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] }
+      // ,
+      // { test: /\.jsx?$/, loader: 'babel?stage=0', exclude: /node_modules/ }
+       ,
+       { test: /\.js$/, exclude: "/node_modules/", loader: "eslint-loader" }
     ]
   }
 };

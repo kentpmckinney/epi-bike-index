@@ -1,11 +1,10 @@
-/* eslint-disable indent */
-/* eslint-disable no-unused-vars */
 import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 
-$(document).ready(function() {
-
+$(document).ready(function () {
 
   (async () => {
     try {
@@ -17,13 +16,11 @@ $(document).ready(function() {
         jsonifiedResponse = false;
       }
       for (let bike of jsonifiedResponse.bikes) {
-        $('#results').append(`${bike.serial}<br>`)
+        $('#results').append(`${bike.serial}<br>`);
       }
-      // $('#results').append(jsonifiedResponse.bikes[0].serial);
-    } catch(e) {
+    } catch (e) {
       alert(e.message);
     }
   })();
 
-  
 });
