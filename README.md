@@ -64,3 +64,4 @@ Kent McKinney - [GitHub](https://github.com/kentpmckinney) - [LinkedIn](https://
 
 ## Acknowledgments
 
+https://www.learnhowtoprogram.com/intermediate-javascript/asynchrony-and-apis/dino-ipsum-bike-index-google-maps-two-day-project
